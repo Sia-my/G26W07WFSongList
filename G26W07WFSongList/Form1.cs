@@ -92,8 +92,11 @@ namespace G26W07WFSongList
         {
             listSong.Items.Clear();
 
+            string keyword = txtFilter.Text.Trim().ToLower();
+
             var songs = _db.Songs
-                //.Where(s => s.Rating >= 4)
+                .Where(s => s.Title.ToLower().Contains(keyword) ||
+                    s.Artist.ToLower().Contains(keyword))
                 .OrderByDescending(s => s.Rating)
                 .ToList();
 
@@ -137,7 +140,8 @@ namespace G26W07WFSongList
             btnDelete.Enabled = true;
         }
 
-        private void OnYouTube(object sender, EventArgs e){
+        private void OnYouTube(object sender, EventArgs e)
+        {
             // 혹시 빈 공간 더블클릭할까봐 검사
             if (listSong.SelectedItem is not Song song)
                 return;
@@ -149,6 +153,10 @@ namespace G26W07WFSongList
             {
                 UseShellExecute = true
             });
+        }
+
+        private void OnFilterChanged(object sender, EventArgs e){
+            LoadSongs();
         }
     }
 
