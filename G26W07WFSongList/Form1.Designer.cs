@@ -51,7 +51,7 @@
             // txtTitle
             // 
             txtTitle.Location = new Point(16, 533);
-            txtTitle.MaxLength = 1;
+            txtTitle.MaxLength = 20;
             txtTitle.Name = "txtTitle";
             txtTitle.PlaceholderText = "제목";
             txtTitle.Size = new Size(296, 35);
@@ -68,6 +68,7 @@
             // txtRating
             // 
             txtRating.Location = new Point(528, 534);
+            txtRating.MaxLength = 1;
             txtRating.Name = "txtRating";
             txtRating.PlaceholderText = "평점";
             txtRating.Size = new Size(127, 35);
